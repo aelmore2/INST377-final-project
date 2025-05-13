@@ -13,12 +13,16 @@ const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey);
 
+app.get("/", (req, res) => {
+  res.sendFile("public/Home.html", { root: __dirname });
+});
+
 app.listen(port, () => {
   console.log("APP IS ALIVE ON PORT", port);
 });
 
-app.post('/books', async (req, res) => {
-  console.log('Adding Book');
+app.post("/books", async (req, res) => {
+  console.log("Adding Book");
 
   console.log(req.body);
   var title = req.body.title;
@@ -26,7 +30,7 @@ app.post('/books', async (req, res) => {
   var published = req.body.published;
 
   const { data, error } = await supabase
-    .from('book')
+    .from("book")
     .insert({
       title: title,
       author: author,
@@ -35,7 +39,7 @@ app.post('/books', async (req, res) => {
     .select();
 
   if (error) {
-    console.log('Error');
+    console.log("Error");
     res.send(error);
   } else {
     res.send(data);
