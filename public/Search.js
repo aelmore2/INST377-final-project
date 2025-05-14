@@ -1,5 +1,5 @@
 function loadSlowAPI(bookName) {
-  return fetch(`https://openlibrary.org/search.json?title=${bookName}`).then(
+  return fetch(`https://gutendex.com/books/?search=${bookName}`).then(
     (result) => result.json()
   );
 }
@@ -13,20 +13,18 @@ async function getBooks() {
   const info = document.querySelector(".results");
   info.innerHTML = "";
 
-  result.docs.forEach(async (book) => {
+  result.results.forEach((book) => {
     const bookContainer = document.createElement("div");
     bookContainer.setAttribute("class", "bookInfo");
 
     const cover = document.createElement("img");
-    cover.src = book.cover_i
-      ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
-      : "No-image-available.png";
+    cover.src = book.formats["image/jpeg"]
 
     const title = document.createElement("h4");
     title.innerHTML = book.title;
 
     const author = document.createElement("p");
-    author.innerHTML = book.author_name;
+    author.innerHTML = book.authors[0].name;
 
     bookContainer.appendChild(cover);
     bookContainer.appendChild(title);
