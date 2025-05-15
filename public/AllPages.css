@@ -4,14 +4,9 @@ body {
 
 .results {
   display: grid;
-  /* grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); */
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(240px, 1fr)
-  ); /* Change auto-fill to auto-fit */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 10px;
   margin: 20px;
-  /* justify-content: center; */
   justify-items: stretch;
   align-items: start;
 }
@@ -24,8 +19,6 @@ body {
   padding: 10px;
   text-align: center;
   transition: transform 0.2s;
-  /* margin-top: 20px; */
-  /* width: 220px; */
   height: 280px;
   position: relative;
   overflow: hidden;
@@ -57,4 +50,33 @@ body {
 
 #spinner {
   display: none;
+}
+
+#main-nav {
+  background-color: slategray;
+  text-align: center;
+}
+
+#main-nav li {
+  display: inline-block;
+  position: relative;
+}
+
+#main-nav li:hover {
+  background-color: whitesmoke;
+}
+
+#main-nav ul li {
+  list-style-type: none;
+  text-align: center;
+  padding: 10px;
+}
+
+#main-nav a {
+  color: black;
+  text-decoration: none;
+}
+
+.bookShelfName {
+  text-align: center;
 }

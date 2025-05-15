@@ -18,7 +18,7 @@ async function getBooks() {
     bookContainer.setAttribute("class", "bookInfo");
 
     const cover = document.createElement("img");
-    cover.src = book.formats["image/jpeg"]
+    cover.src = book.formats["image/jpeg"];
 
     const title = document.createElement("h4");
     title.innerHTML = book.title;
@@ -26,9 +26,13 @@ async function getBooks() {
     const author = document.createElement("p");
     author.innerHTML = book.authors[0].name;
 
+    const summary = document.createElement("p");
+    summary.innerHTML = book.summaries;
+
     bookContainer.appendChild(cover);
     bookContainer.appendChild(title);
     bookContainer.appendChild(author);
+    bookContainer.appendChild(summary);
 
     info.appendChild(bookContainer);
   });
