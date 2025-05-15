@@ -13,25 +13,32 @@ async function getBooks() {
   const info = document.querySelector(".results");
   info.innerHTML = "";
 
-  // Possible ways to add book cards to database: setAttribute?
   result.results.forEach((book) => {
     const bookContainer = document.createElement("div");
     bookContainer.setAttribute("class", "bookInfo");
 
     const cover = document.createElement("img");
+    cover.setAttribute("class", "bookCover");
     cover.src = book.formats["image/jpeg"];
 
     const title = document.createElement("h4");
+    cover.setAttribute("class", "bookTitle");
     title.innerHTML = book.title;
 
     const author = document.createElement("p");
+    cover.setAttribute("class", "bookAuthor");
     author.innerHTML = book.authors[0].name;
 
     const summary = document.createElement("p");
+    cover.setAttribute("class", "bookSummary");
     summary.innerHTML = book.summaries;
 
     const addButton = document.createElement("button");
     addButton.innerHTML = "Favorite";
+
+    addButton.addEventListener("click", () => {
+      addToFavorites(book);
+    });
 
     bookContainer.appendChild(cover);
     bookContainer.appendChild(title);
@@ -45,16 +52,17 @@ async function getBooks() {
   document.getElementById("bookName").value = "";
 }
 
-async function addToFavorites() {
+async function addToFavorites(book) {
   await fetch(`/books`, {
     method: "POST",
     body: JSON.stringify({
-      
+      title: book.title,
+      author: book.authors[0].name,
+      cover: book.formats["image/jpeg"],
+      summary: book.summaries,
     }),
     headers: {
       "content-type": "application/json",
     },
   }).then((result) => result.json());
-
-  await getBooks();
 }

@@ -11,15 +11,25 @@ app.use(express.static(__dirname + "/public"));
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
+
 const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey);
 
 app.get("/", (req, res) => {
   res.sendFile("public/Home.html", { root: __dirname });
 });
 
-app.listen(port, () => {
-  console.log("APP IS ALIVE ON PORT", port);
-});
+// app.get("/books", async (req, res) => {
+//   console.log("Attempting to GET all books");
+
+//   const { data, error } = await supabase.from("book").select();
+
+//   if (error) {
+//     console.log("Error");
+//     res.send(error);
+//   } else {
+//     res.send(data);
+//   }
+// });
 
 app.post("/books", async (req, res) => {
   console.log("Adding Book");
@@ -27,21 +37,29 @@ app.post("/books", async (req, res) => {
   console.log(req.body);
   var title = req.body.title;
   var author = req.body.author;
-  var published = req.body.published;
+  var cover = req.body.cover;
+  var summary = req.body.summary[0];
 
   const { data, error } = await supabase
-    .from("book")
-    .insert({
-      title: title,
-      author: author,
-      published: published,
-    })
+    .from("books")
+    .insert([
+      {
+        title: title,
+        author: author,
+        cover: cover,
+        summary: summary,
+      },
+    ])
     .select();
 
   if (error) {
-    console.log("Error");
-    res.send(error);
+    console.error("Supabase Error:", error);
+    res.status(500).send(error);
   } else {
     res.send(data);
   }
+});
+
+app.listen(port, () => {
+  console.log("APP IS ALIVE ON PORT", port);
 });
