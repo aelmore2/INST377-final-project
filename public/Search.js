@@ -49,9 +49,7 @@ async function addToFavorites() {
   await fetch(`/books`, {
     method: "POST",
     body: JSON.stringify({
-      firstName: `${document.getElementById("firstName").value}`,
-      lastName: `${document.getElementById("lastName").value}`,
-      state: `${document.getElementById("state").value}`,
+      
     }),
     headers: {
       "content-type": "application/json",
