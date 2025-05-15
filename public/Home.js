@@ -34,9 +34,13 @@ async function getBookshelves() {
     const author = document.createElement("p");
     author.innerHTML = book.authors[0].name;
 
+    const addButton = document.createElement("button");
+    addButton.innerHTML = "Favorite";
+
     bookContainer.appendChild(cover);
     bookContainer.appendChild(title);
     bookContainer.appendChild(author);
+    bookContainer.appendChild(addButton);
 
     info.appendChild(bookContainer);
   });

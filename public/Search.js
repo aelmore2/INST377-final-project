@@ -13,6 +13,7 @@ async function getBooks() {
   const info = document.querySelector(".results");
   info.innerHTML = "";
 
+  // Possible ways to add book cards to database: setAttribute?
   result.results.forEach((book) => {
     const bookContainer = document.createElement("div");
     bookContainer.setAttribute("class", "bookInfo");
@@ -29,13 +30,33 @@ async function getBooks() {
     const summary = document.createElement("p");
     summary.innerHTML = book.summaries;
 
+    const addButton = document.createElement("button");
+    addButton.innerHTML = "Favorite";
+
     bookContainer.appendChild(cover);
     bookContainer.appendChild(title);
     bookContainer.appendChild(author);
     bookContainer.appendChild(summary);
+    bookContainer.appendChild(addButton);
 
     info.appendChild(bookContainer);
   });
 
   document.getElementById("bookName").value = "";
+}
+
+async function addToFavorites() {
+  await fetch(`/books`, {
+    method: "POST",
+    body: JSON.stringify({
+      firstName: `${document.getElementById("firstName").value}`,
+      lastName: `${document.getElementById("lastName").value}`,
+      state: `${document.getElementById("state").value}`,
+    }),
+    headers: {
+      "content-type": "application/json",
+    },
+  }).then((result) => result.json());
+
+  await getBooks();
 }
