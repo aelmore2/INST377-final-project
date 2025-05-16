@@ -30,15 +30,15 @@ async function getBookshelves() {
     cover.src = book.formats["image/jpeg"];
 
     const title = document.createElement("h4");
-    cover.setAttribute("class", "bookTitle");
+    title.setAttribute("class", "bookTitle");
     title.innerHTML = book.title;
 
     const author = document.createElement("p");
-    cover.setAttribute("class", "bookAuthor");
+    author.setAttribute("class", "bookAuthor");
     author.innerHTML = book.authors[0].name;
 
     const summary = document.createElement("p");
-    cover.setAttribute("class", "bookSummary");
+    summary.setAttribute("class", "bookSummary");
     summary.innerHTML = book.summaries;
 
     const addButton = document.createElement("button");

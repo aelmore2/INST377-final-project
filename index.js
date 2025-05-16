@@ -18,18 +18,18 @@ app.get("/", (req, res) => {
   res.sendFile("public/Home.html", { root: __dirname });
 });
 
-// app.get("/books", async (req, res) => {
-//   console.log("Attempting to GET all books");
+app.get("/books", async (req, res) => {
+  console.log("Attempting to GET all books");
 
-//   const { data, error } = await supabase.from("book").select();
+  const { data, error } = await supabase.from("books").select();
 
-//   if (error) {
-//     console.log("Error");
-//     res.send(error);
-//   } else {
-//     res.send(data);
-//   }
-// });
+  if (error) {
+    console.log("Error", error);
+    res.send(error);
+  } else {
+    res.send(data);
+  }
+});
 
 app.post("/books", async (req, res) => {
   console.log("Adding Book");
@@ -42,14 +42,12 @@ app.post("/books", async (req, res) => {
 
   const { data, error } = await supabase
     .from("books")
-    .insert([
-      {
-        title: title,
-        author: author,
-        cover: cover,
-        summary: summary,
-      },
-    ])
+    .insert({
+      title: title,
+      author: author,
+      cover: cover,
+      summary: summary,
+    })
     .select();
 
   if (error) {
@@ -58,6 +56,10 @@ app.post("/books", async (req, res) => {
   } else {
     res.send(data);
   }
+});
+
+app.delete("/books", async (req, res) => {
+  console.log("Removing a book");
 });
 
 app.listen(port, () => {

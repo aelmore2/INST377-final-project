@@ -13,7 +13,7 @@ body {
 
 .bookInfo {
   background: white;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   padding: 10px;
@@ -21,18 +21,20 @@ body {
   transition: transform 0.2s;
   height: 280px;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
 }
 
-.bookInfo::after {
+/* .bookInfo::after {
   content: "";
-  position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
   height: 20px;
   background: linear-gradient(to bottom, transparent, white);
-}
+  pointer-events: none;
+} */
 
 .bookInfo:hover {
   transform: translateY(-5px);
