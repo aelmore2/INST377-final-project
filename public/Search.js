@@ -5,6 +5,7 @@ function loadSlowAPI(bookName) {
 }
 
 async function getBooks() {
+  console.log("Getting books");
   const bookName = document.getElementById("bookName").value;
   const slowAPIResponse = await loadSlowAPI(bookName);
   console.log(slowAPIResponse);

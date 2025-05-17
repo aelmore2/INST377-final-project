@@ -30,6 +30,7 @@ async function loadBookData() {
 
         removeButton.addEventListener("click", () => {
           removeFromFavorites(book, bookContainer);
+          bookContainer.remove();
         });
 
         bookContainer.appendChild(cover);
@@ -47,19 +48,12 @@ async function removeFromFavorites(book, bookContainer) {
   await fetch(`/books`, {
     method: "DELETE",
     body: JSON.stringify({
-      title: book.title,
-      author: book.author,
-      cover: book.cover,
-      summary: book.summary,
+      id: book.id,
     }),
     headers: {
       "content-type": "application/json",
     },
-  })
-    .then((result) => result.json())
-    .then(() => {
-      bookContainer.remove();
-    });
+  }).then((result) => result.json());
 }
 
 window.onload = loadBookData;

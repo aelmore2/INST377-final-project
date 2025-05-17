@@ -1,17 +1,25 @@
-function loadPopularAPI() {
-  return fetch(`https://gutendex.com/books?sort=popular`).then((result) =>
+function loadTopicAPI(topic) {
+  return fetch(`https://gutendex.com/books?topic=${topic}`).then((result) =>
     result.json()
   );
 }
 
-async function getPopular() {
-  const popularAPIResponse = await loadPopularAPI();
-  console.log(popularAPIResponse);
-  const shuffle = await popularAPIResponse.results;
-  const result = shuffle.sort(() => 0.5 - Math.random());
+async function getBookshelves() {
+  const bookShelf = ["Horror", "Adventure", "Fantasy", "Humor", "Mystery"];
+
+  const topicSelection = Math.floor(Math.random() * bookShelf.length);
+  const topic = bookShelf[topicSelection];
+  const topicAPIResponse = await loadTopicAPI(topic);
+  console.log(topicAPIResponse);
+  const shuffle = await topicAPIResponse.results;
 
   const info = document.querySelector(".results");
   info.innerHTML = "";
+
+  const bookShelfName = document.querySelector(".bookShelfName");
+  bookShelfName.innerHTML = topic;
+
+  const result = shuffle.sort(() => 0.5 - Math.random());
 
   result.forEach((book, index) => {
     if (index >= 10) return;
@@ -67,4 +75,5 @@ async function addToFavorites(book) {
   }).then((result) => result.json());
 }
 
-window.onload = getPopular;
+window.onload = getBookshelves;
+

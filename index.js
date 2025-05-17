@@ -60,6 +60,15 @@ app.post("/books", async (req, res) => {
 
 app.delete("/books", async (req, res) => {
   console.log("Removing a book");
+  var id = req.body.id;
+  const { data, error } = await supabase.from("books").delete().eq("id", id);
+
+  if (error) {
+    console.error("Supabase Error:", error);
+    res.status(500).send(error);
+  } else {
+    res.send(data);
+  }
 });
 
 app.listen(port, () => {
