@@ -36,6 +36,7 @@ async function getPopular() {
     summary.innerHTML = book.summaries;
 
     const addButton = document.createElement("button");
+    addButton.setAttribute("class", "button-87")
     addButton.innerHTML = "Favorite";
 
     addButton.addEventListener("click", () => {

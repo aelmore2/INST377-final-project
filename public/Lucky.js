@@ -13,13 +13,13 @@ async function getBookshelves() {
   console.log(topicAPIResponse);
   const shuffle = await topicAPIResponse.results;
 
+  const result = shuffle.sort(() => 0.5 - Math.random());
+
   const info = document.querySelector(".results");
   info.innerHTML = "";
 
   const bookShelfName = document.querySelector(".bookShelfName");
   bookShelfName.innerHTML = topic;
-
-  const result = shuffle.sort(() => 0.5 - Math.random());
 
   result.forEach((book, index) => {
     if (index >= 10) return;
@@ -44,6 +44,7 @@ async function getBookshelves() {
     summary.innerHTML = book.summaries;
 
     const addButton = document.createElement("button");
+    addButton.setAttribute("class", "button-87");
     addButton.innerHTML = "Favorite";
 
     addButton.addEventListener("click", () => {
@@ -76,4 +77,3 @@ async function addToFavorites(book) {
 }
 
 window.onload = getBookshelves;
-

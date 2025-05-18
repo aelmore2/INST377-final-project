@@ -22,15 +22,22 @@
         <li><a href="About.html">About</a></li>
       </ul>
       <button id="annyangButton" onclick="annyang.start();">
-        <img src="multimedia.png" style="width: 40px; height: 40px" />
+        <img src="microphone.png" />
       </button>
     </nav>
     <h1 class="pageTitle">Search</h1>
     <div class="mainContainer">
       <div class="topContainer">
         <form class="searchForm" onsubmit="getBooks(); return false">
-          <input type="text" id="bookName" class="search" />
-          <button class="searchButton" type="submit">Search</button>
+          <input
+            type="text"
+            id="bookName"
+            class="search"
+            placeholder="Search by author or title...."
+          />
+          <button id="searchButton" type="submit">
+            <img src="search.png" />
+          </button>
         </form>
       </div>
 

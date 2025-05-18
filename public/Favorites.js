@@ -26,6 +26,7 @@ async function loadBookData() {
         summary.innerHTML = book.summary;
 
         const removeButton = document.createElement("button");
+        removeButton.setAttribute("class", "button-87");
         removeButton.innerHTML = "Remove";
 
         removeButton.addEventListener("click", () => {

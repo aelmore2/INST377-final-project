@@ -35,6 +35,7 @@ async function getBooks() {
     summary.innerHTML = book.summaries;
 
     const addButton = document.createElement("button");
+    addButton.setAttribute("class", "button-87");
     addButton.innerHTML = "Favorite";
 
     addButton.addEventListener("click", () => {
@@ -66,4 +67,18 @@ async function addToFavorites(book) {
       "content-type": "application/json",
     },
   }).then((result) => result.json());
+}
+
+if (annyang) {
+  annyang.addCommands({
+    "search *input": function (input) {
+      console.log("Searching for book");
+      document.getElementById("bookName").value = input;
+      getBooks();
+    },
+  });
+
+  SpeechKITT.annyang();
+
+  SpeechKITT.vroom();
 }
