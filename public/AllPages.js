@@ -33,15 +33,6 @@ if (annyang) {
     },
   });
 
-  annyang.addCommands({
-    "search *input": function (input) {
-      window.location.href = "Search.html";
-      console.log("Searching for book");
-      document.getElementById("bookName").value = input;
-      getBooks();
-    },
-  });
-
   SpeechKITT.annyang();
 
   SpeechKITT.vroom();
