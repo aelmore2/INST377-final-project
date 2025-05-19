@@ -6,7 +6,7 @@ Title of project:
 Inkwell
 
 Description of your project:
-This project allows users to search through a catalouge of classic, copyright free, and public domain works of literature. Users will have the ability to search for specfic works by title or by author or recieve randonly generated recomendations based on a books overall popularity or by it's genre. User's will also able to navigate through the various pages using voice commands by saying "Navigate to {page name}" and on the search page they will be able to search for works by saying "Search {input}."
+This project allows users to search through a catalog of classic, copyright-free, and public domain works of literature. Users will have the ability to search for specific works by title or by author or receive randomly generated recommendations based on a book's overall popularity or by its genre. Users will also be able to navigate through the various pages using voice commands by saying "Navigate to {page name}," and on the search page they will be able to search for works by saying "Search {input}."
 
 Description of target browsers:
 The target browsers for this project are Mozilla FireFox, Google Chrome, Microsoft Edge, and Safari.
