@@ -24,6 +24,14 @@ if (annyang) {
       window.location.href = "Favorites.html";
     },
 
+    "navigate to lucky": function () {
+      window.location.href = "Lucky.html";
+    },
+
+    "navigate to lucky page": function () {
+      window.location.href = "Lucky.html";
+    },
+
     "navigate to about": function () {
       window.location.href = "About.html";
     },
