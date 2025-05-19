@@ -7,12 +7,15 @@ function loadSlowAPI(bookName) {
 async function getBooks() {
   console.log("Getting books");
   const bookName = document.getElementById("bookName").value;
-  const slowAPIResponse = await loadSlowAPI(bookName);
-  console.log(slowAPIResponse);
-  const result = await slowAPIResponse;
 
   const info = document.querySelector(".results");
   info.innerHTML = "";
+
+  document.querySelector(".loader").style.display = "block";
+
+  const slowAPIResponse = await loadSlowAPI(bookName);
+  console.log(slowAPIResponse);
+  const result = await slowAPIResponse;
 
   result.results.forEach((book) => {
     const bookContainer = document.createElement("div");
@@ -50,6 +53,8 @@ async function getBooks() {
 
     info.appendChild(bookContainer);
   });
+
+  document.querySelector(".loader").style.display = "none";
 
   document.getElementById("bookName").value = "";
 }

@@ -52,7 +52,7 @@ app.post("/books", async (req, res) => {
 
   if (error) {
     console.error("Supabase Error:", error);
-    res.status(500).send(error);
+    res.send(error);
   } else {
     res.send(data);
   }
@@ -65,7 +65,7 @@ app.delete("/books", async (req, res) => {
 
   if (error) {
     console.error("Supabase Error:", error);
-    res.status(500).send(error);
+    res.send(error);
   } else {
     res.send(data);
   }

@@ -5,6 +5,10 @@ function loadTopicAPI(topic) {
 }
 
 async function getBookshelves() {
+  console.log("Getting books");
+
+  document.querySelector(".loader").style.display = "block";
+
   const bookShelf = ["Horror", "Adventure", "Fantasy", "Humor", "Mystery"];
 
   const topicSelection = Math.floor(Math.random() * bookShelf.length);
@@ -59,6 +63,8 @@ async function getBookshelves() {
 
     info.appendChild(bookContainer);
   });
+
+  document.querySelector(".loader").style.display = "none";
 }
 
 async function addToFavorites(book) {

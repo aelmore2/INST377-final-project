@@ -5,6 +5,8 @@ function loadPopularAPI() {
 }
 
 async function getPopular() {
+  document.querySelector(".loader").style.display = "block";
+
   const popularAPIResponse = await loadPopularAPI();
   console.log(popularAPIResponse);
   const shuffle = await popularAPIResponse.results;
@@ -36,7 +38,7 @@ async function getPopular() {
     summary.innerHTML = book.summaries;
 
     const addButton = document.createElement("button");
-    addButton.setAttribute("class", "button-87")
+    addButton.setAttribute("class", "button-87");
     addButton.innerHTML = "Favorite";
 
     addButton.addEventListener("click", () => {
@@ -51,6 +53,8 @@ async function getPopular() {
 
     info.appendChild(bookContainer);
   });
+
+  document.querySelector(".loader").style.display = "none";
 }
 
 async function addToFavorites(book) {
