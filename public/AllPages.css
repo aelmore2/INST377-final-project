@@ -28,7 +28,6 @@ body {
   position: relative;
   overflow-y: auto;
   scrollbar-width: none;
-  scrollbar-gutter: stable;
 }
 
 .bookInfo:hover,
